@@ -13,4 +13,20 @@ setTimeout(() => {
     emiter.emit('anything', {d: 4})
 }, 1000)
 
-class Dispatcher ex
+class Dispatcher extends EventEmitter {
+    subscribe(eventName, callback) {
+        console.log('[Subscribe...]')
+        this.on(eventName, callback)
+    }
+    dispatch(eventName, data){
+        console.log('[Dispatch...]')
+        this.emit(eventName, data)
+    }
+}
+
+const dis = new Dispatcher()
+
+dis.subscribe('aa', data => {
+    console.log('ON: aa ', data)
+})
+dis.dispatch('aa', {aa: 404})
