@@ -73,6 +73,8 @@ const server = http.createServer((req, res) => {
 })
 })
 
-server.listen(3000, () => {
-    console.log(chalk.blue('Server has been started!'))
+const PORT = process.env.PORT || 3000
+
+server.listen(PORT, () => {
+    console.log(chalk.blue(`Server has been started on port ${PORT}!`))
 })
